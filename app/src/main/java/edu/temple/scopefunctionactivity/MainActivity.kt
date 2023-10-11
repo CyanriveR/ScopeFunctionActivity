@@ -12,7 +12,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        val numbers = listOf<Double>(2.0,2.1,2.2,2.3,2.3)
+        Log.d("function output", getTestDataArray().toString())
+        Log.d("output",averageLessThanMedian(numbers).toString())
         // You can test your helper functions by  calling them from onCreate() and
         // printing their output to the Log, which is visible in the LogCat:
         // eg. Log.d("function output", getTestDataArray().toString())
@@ -28,9 +30,9 @@ class MainActivity : AppCompatActivity() {
 
     // Return a list of random, sorted integers
     private fun getTestDataArray() : List<Int> {
-        val testArray = MutableList(10){ Random.nextInt()}
-        testArray.sort()
-        return testArray
+        val testArray = MutableList(10){ Random.nextInt()%10}.apply {
+            return this.sorted()
+        }
     }
 
     // Return true if average value in list is greater than median value, false otherwise
